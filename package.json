@@ -1,0 +1,33 @@
+{
+  "name": "packertracker-api",
+  "version": "1.0.0",
+  "description": "API for the Regatta Tropicals Packer Tracker",
+  "main": "api.js",
+  "scripts": {
+    "dev:local": "nodemon -w . -w ./initdb.sql api.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/regattatropicals/packertracker-api.git"
+  },
+  "private": true,
+  "author": {
+    "name": "Robert Matych",
+    "email": "dev@regattatropicals.com"
+  },
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/regattatropicals/packertracker-api/issues"
+  },
+  "homepage": "https://github.com/regattatropicals/packertracker-api#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-jwt": "^5.3.1",
+    "helmet": "^3.12.1",
+    "promise-mysql": "^3.2.1",
+    "scrypt": "^6.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
