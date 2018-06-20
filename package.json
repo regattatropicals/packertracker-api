@@ -23,7 +23,9 @@
   "dependencies": {
     "express": "^4.16.3",
     "express-jwt": "^5.3.1",
+    "express-jwt-permissions": "^1.2.1",
     "helmet": "^3.12.1",
+    "jsonwebtoken": "^8.3.0",
     "promise-mysql": "^3.2.1",
     "scrypt": "^6.0.3"
   },

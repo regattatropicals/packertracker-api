@@ -1,8 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
-const jwt = require('express-jwt');
-
-const login = require('./routes/login');
+const expressJWT = require('express-jwt');
 
 const PORT = process.env['PORT']
 const DBHOST = process.env['DBHOST']
@@ -25,20 +23,22 @@ if (!JWTSEC) {
     throw new Error('Must have JWT Secret stored in environment variable JWTSEC');
 }
 
+const login = require('./routes/login');
+
 const app = express();
 
-app.use(express.json());
-app.use(jwt({ secret: JWTSEC }).unless({path: ['/login']}));
+app.use(helmet());
+app.use(expressJWT({ secret: JWTSEC }).unless({path: ['/login']}));
 app.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
       res.sendStatus(401);
     }
 });
-app.use(helmet());
+app.use(express.json());
 
 app.use('/login', login);
 app.get('/', (req, res) => {
-    res.send('hi');
+    res.send('Hi');
 });
 
 app.listen(PORT, (err) => {

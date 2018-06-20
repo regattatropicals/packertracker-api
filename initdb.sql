@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `ptdb`.`Credentials` (
   `salt` BINARY(32) NOT NULL,
   `salted_hash` BINARY(96) NOT NULL,
   `is_admin` BOOL NOT NULL DEFAULT FALSE,
+  `is_raspi` BOOL NOT NULL DEFAULT FALSE,
   PRIMARY KEY (`username`),
   FOREIGN KEY (`employee_id`) REFERENCES `Employee`(`employee_id`)
 );
