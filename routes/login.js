@@ -1,7 +1,7 @@
 const express = require('express');
 
-const query = require('../db');
-const { verifyPassword, buildJWT, isValidJWT } = require('../auth');
+const query = require('../utils/db');
+const { verifyPassword, buildJWT, isValidJWT } = require('../utils/auth');
 
 const router = express.Router();
 
