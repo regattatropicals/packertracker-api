@@ -37,9 +37,6 @@ app.use((err, req, res, next) => {
 app.use(express.json());
 
 app.use('/login', login);
-app.get('/', (req, res) => {
-    res.send('Hi');
-});
 
 app.listen(PORT, (err) => {
     if (err) {
