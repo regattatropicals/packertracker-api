@@ -15,9 +15,11 @@ router.post('/', async (req, res, next) => {
         return res.send(req.headers.authorization);
     }
 
+    let username;
+    let password;
     try {
-        const username = req.body.username;
-        const password = req.body.password;
+        username = req.body.username;
+        password = req.body.password;
     } catch (err) {
         /* The login request was malformed, so return a client error. */
         return res.sendStatus(400);
