@@ -4,6 +4,7 @@
   "description": "API for the Regatta Tropicals Packer Tracker",
   "main": "api.js",
   "scripts": {
+    "start": "node api.js",
     "dev:local": "nodemon -w . -w ./initdb.sql api.js"
   },
   "repository": {
