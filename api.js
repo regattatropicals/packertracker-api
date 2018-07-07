@@ -2,7 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const expressJWT = require('express-jwt');
 
-const PORT = process.env['RDS_PORT']
+const PORT = process.env['PORT']
 const DBHOST = process.env['RDS_HOSTNAME']
 const DBUSER = process.env['RDS_USERNAME']
 const DBPASS = process.env['RDS_PASSWORD']

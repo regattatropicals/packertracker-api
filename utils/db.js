@@ -2,9 +2,9 @@ const fs = require('fs');
 const mysql = require('promise-mysql');
 
 async function initdb() {
-    const DBHOST = process.env['DBHOST']
-    const DBUSER = process.env['DBUSER']
-    const DBPASS = process.env['DBPASS']
+    const DBHOST = process.env['RDS_HOSTNAME']
+    const DBUSER = process.env['RDS_USERNAME']
+    const DBPASS = process.env['RDS_PASSWORD']
     const initDBconnection = await mysql.createConnection({
         host                : DBHOST,
         user                : DBUSER,
