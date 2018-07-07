@@ -11,8 +11,8 @@ router.post('/', async (req, res, next) => {
      * This is a precaution to minimize the number of concurrently
      * valid tokens for a given user.
      */
-    if (await isValidJWT(req.headers.authorization)) {
-        return res.send(req.headers.authorization);
+    if (await isValidJWT(req.cookies.access_token)) {
+        return res.sendStatus(200);
     }
 
     let username;
@@ -22,6 +22,7 @@ router.post('/', async (req, res, next) => {
         password = req.body.password;
     } catch (err) {
         /* The login request was malformed, so return a client error. */
+        console.log(err);
         return res.sendStatus(400);
     }
 
@@ -80,12 +81,16 @@ router.post('/', async (req, res, next) => {
 
             const jwt = await buildJWT(payload, isRaspi ? null : 60 * 60 * 16);
 
-            return res.send(jwt);
+            return res.clearCookie('access_token').cookie('access_token', jwt, {
+                httpOnly: true,
+                secure: true
+            }).sendStatus(200);
         } else {
             return res.sendStatus(401);
         }
 
     } catch(err) {
+        console.log(err);
         return res.sendStatus(500);
     }
 });

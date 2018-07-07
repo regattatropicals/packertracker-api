@@ -1,5 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
 const expressJWT = require('express-jwt');
 
 const PORT = process.env['APP_PORT']
@@ -28,7 +29,17 @@ const login = require('./routes/login');
 const app = express();
 
 app.use(helmet());
-app.use(expressJWT({ secret: JWTSEC }).unless({path: ['/api/login']}));
+app.use(cookieParser());
+app.use(expressJWT({
+    secret: JWTSEC,
+    getToken: (req) => {
+        if (req.cookies && req.cookies.access_token) {
+            return req.cookies.access_token;
+        }
+        return null;
+    }
+}).unless({path: ['/api/login']}));
+
 app.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
       res.sendStatus(401);

@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/regattatropicals/packertracker-api#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "express-jwt": "^5.3.1",
     "express-jwt-permissions": "^1.2.1",
