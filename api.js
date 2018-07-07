@@ -28,7 +28,7 @@ const login = require('./routes/login');
 const app = express();
 
 app.use(helmet());
-app.use(expressJWT({ secret: JWTSEC }).unless({path: ['/login']}));
+app.use(expressJWT({ secret: JWTSEC }).unless({path: ['/api/login']}));
 app.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
       res.sendStatus(401);
