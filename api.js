@@ -8,7 +8,7 @@ const DBUSER = process.env['RDS_USERNAME']
 const DBPASS = process.env['RDS_PASSWORD']
 const JWTSEC = process.env['JWTSEC']
 if (!PORT) {
-    throw new Error('Must have application port stored in environment variable RDS_PORT');
+    throw new Error('Must have application port stored in environment variable PORT');
 }
 if (!DBHOST) {
     throw new Error('Must have DB connection host stored in environment variable RDS_HOSTNAME');
